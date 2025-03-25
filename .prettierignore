@@ -1,0 +1,7 @@
+dist
+node_modules
+.prettierrc
+.eslint.config.mjs
+package --log.json
+pacjage.json
+tsconfig.json

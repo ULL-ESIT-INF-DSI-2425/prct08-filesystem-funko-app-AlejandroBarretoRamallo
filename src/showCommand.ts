@@ -5,6 +5,9 @@ import { FunkoPop } from './funkoPop.js';
 import { printFunko } from './listCommand.js';
 import chalk from 'chalk';
 
+/**
+ * Obligatory options for show command
+ */
 export interface ShowFunko {
   user: string,
   id: number
@@ -12,6 +15,9 @@ export interface ShowFunko {
 
 export const log = console.log
 
+/**
+ * Show command wiht obligatory options
+ */
 export const showCommand = {
   command: 'show',
   describe: 'shows information of a concrete funko',
@@ -33,6 +39,11 @@ export const showCommand = {
   }
 }
 
+/**
+ * 
+ * @param user - username
+ * @param id Funko id
+ */
 export function showFunko(user: string, id: number): void {
   fs.readFile(path.join(process.cwd(), `/${user}/${user}.json`), (err, data) => {
     if (err) {

@@ -6,6 +6,9 @@ import chalk from "chalk";
 
 export const log = console.log
 
+/**
+ * Represents the interface that must be using when adding funko
+ */
 export interface AddFunko {
   user: string,
   id: number,
@@ -20,6 +23,11 @@ export interface AddFunko {
   value: number
 }
 
+/**
+ * Checks if the user's directory and file .json is created or creates it if not
+ * @param user - Username
+ * @param callback - Async function to be called after creating a directory and  a file
+ */
 export function checkPath(user: string, callback: () => void): void {
   const dirPath = path.join(process.cwd(), `/${user}`);
   const filePath = path.join(process.cwd(), `/${user}/${user}.json`);
@@ -52,6 +60,9 @@ export function checkPath(user: string, callback: () => void): void {
   });
 }
 
+/**
+ * The command add with its multiple obligatory options
+ */
 export const addCommand = {
   command: 'add',
   describe: 'add Funko',
@@ -134,6 +145,11 @@ export const addCommand = {
   }
 };
 
+/**
+ * Reads a list of funkopops and if the id is not registered, adds another funko to the list of specified user
+ * @param funko - Funko pop object
+ * @param user - Username
+ */
 export function addFunko(funko: FunkoPop, user: string): void {
   fs.readFile(path.join(process.cwd(), `/${user}/${user}.json`), (err, data) => {
     if (err) {

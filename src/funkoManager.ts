@@ -6,6 +6,9 @@ import { listCommand } from './listCommand.js';
 import { modifyCommand } from './modifyCommand.js';
 import { showCommand } from './showCommand.js';
 
+/**
+ * Checks de diferrent commands
+ */
 yargs(hideBin(process.argv))
   .command(addCommand.command, addCommand.describe, addCommand.builder, addCommand.handler)
   .command(deleteCommand.command, deleteCommand.describe, deleteCommand.builder, deleteCommand.handler)

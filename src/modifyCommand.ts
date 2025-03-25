@@ -5,7 +5,9 @@ import fs from 'fs'
 import path from "path";
 import chalk from "chalk";
 
-
+/**
+ * Obligatory options to modify a funko
+ */
 export interface ModifyFunko {
   user: string,
   id: number,
@@ -22,6 +24,9 @@ export interface ModifyFunko {
 
 export const log = console.log
 
+/**
+ * Modify command wiht obligatory options
+ */
 export const modifyCommand = {
   command: 'modify',
   describe: 'modify a funko',
@@ -104,6 +109,11 @@ export const modifyCommand = {
   }
 };
 
+/**
+ * Searchs a id on a list and modifies the funko with that id if it exists
+ * @param user - Username
+ * @param funko Funkopop
+ */
 export function modifyFunko(user: string, funko: FunkoPop): void {
   fs.readFile(path.join(process.cwd(), `/${user}/${user}.json`), (err, data) => {
     if (err) {

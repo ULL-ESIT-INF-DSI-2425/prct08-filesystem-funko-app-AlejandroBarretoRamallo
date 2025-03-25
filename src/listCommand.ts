@@ -6,12 +6,18 @@ import path from "path";
 import { FunkoPop } from "./funkoPop.js";
 import chalk from "chalk";
 
+/**
+ * Obligatory optiosn for list command
+ */
 export interface ListFunko {
   user: string
 }
 
 export const log = console.log
 
+/**
+ * The list command with obligatory options
+ */
 export const listCommand = {
   command: 'list',
   describe: 'list all funkos',
@@ -30,6 +36,10 @@ export const listCommand = {
   }
 }
 
+/**
+ * Prints each funkopop of a list
+ * @param user - Username
+ */
 export function listFunko(user: string): void {
   fs.readFile(path.join(process.cwd(), `/${user}/${user}.json`), (err, data) => {
     let JSONdata = JSON.parse(data.toString()) as FunkoPop[]
@@ -43,6 +53,10 @@ export function listFunko(user: string): void {
     }
   })
 }
+/**
+ * Prints information of a funkopop
+ * @param funko A funkopop
+ */
 export function printFunko(funko: FunkoPop): void {
   console.log('-------------------------------------')
   console.log(`Funko id: ${funko.id}`)

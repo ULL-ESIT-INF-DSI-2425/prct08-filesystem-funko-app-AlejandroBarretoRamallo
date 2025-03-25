@@ -5,6 +5,9 @@ import fs from 'fs'
 import { FunkoPop } from "./funkoPop.js"
 import chalk from "chalk"
 
+/**
+ * Obligatory options
+ */
 export interface deleteFunko {
   user: string,
   id: number
@@ -12,6 +15,12 @@ export interface deleteFunko {
 
 export const log = console.log
 
+
+/**
+ * Search on a list of funko and if the id is found, its deleted from the list
+ * @param user - username
+ * @param id Funko id to be deleted
+ */
 export function deleteFunko(user: string, id: number): void {
   fs.readFile(path.join(process.cwd(), `/${user}/${user}.json`), (err, data) => {
     if (err) {
@@ -43,6 +52,9 @@ export function deleteFunko(user: string, id: number): void {
   })
 }
 
+/**
+ * The delete command wiht the obligatory options
+ */
 export const deleteCommand = {
   command: 'delete',
   describe: 'deltes a funko pop',
